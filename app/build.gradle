@@ -50,6 +50,11 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation 'com.huawei.hms:hwid:4.0.0.300'
+    implementation "com.squareup.okhttp3:okhttp:3.14.2"
+    implementation 'com.squareup.okio:okio:1.14.1'
+    implementation 'com.auth0:java-jwt:3.8.2'
+    implementation 'com.auth0:jwks-rsa:0.8.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
