@@ -53,6 +53,15 @@ class LoginFragment : Fragment() {
             startActivityForResult(cameraIntent, 10001)
 //            startActivityForResult(mHuaweiIdAuthService.signInIntent, Constant.REQUEST_SIGN_IN_LOGIN);
         }
+
+        btn_login_with_auth_code.setOnClickListener {
+            val authParams =
+                HuaweiIdAuthParamsHelper(HuaweiIdAuthParams.DEFAULT_AUTH_REQUEST_PARAM).setAuthorizationCode()
+                    .createParams()
+            val service =
+                HuaweiIdAuthManager.getService(requireActivity(), authParams)
+            startActivityForResult(service.getSignInIntent(), Constant.REQUEST_SIGN_IN_LOGIN_CODE)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
