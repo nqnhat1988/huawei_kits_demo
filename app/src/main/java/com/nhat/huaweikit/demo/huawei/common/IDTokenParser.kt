@@ -1,5 +1,3 @@
-package com.nhat.huaweikit.demo.huawei.common
-
 /*
 * Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
 *
@@ -15,7 +13,10 @@ package com.nhat.huaweikit.demo.huawei.common
 *    See the License for the specific language governing permissions and
 *    limitations under the License.
 */
+package com.nhat.huaweikit.demo.huawei.common
+
 import android.util.Base64
+import android.util.Log
 import com.auth0.jwk.InvalidPublicKeyException
 import com.auth0.jwk.Jwk
 import com.auth0.jwt.JWT
@@ -25,8 +26,7 @@ import com.auth0.jwt.exceptions.JWTDecodeException
 import com.auth0.jwt.exceptions.JWTVerificationException
 import com.auth0.jwt.exceptions.TokenExpiredException
 import com.auth0.jwt.interfaces.DecodedJWT
-import com.huawei.hmssample.common.ICallBack
-import com.huawei.logger.Log
+import com.nhat.huaweikit.demo.huawei.Constant
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
@@ -47,7 +47,7 @@ import java.util.*
  * The open source software depended by this demo may have vulnerabilities,
  * please refer to the open source software release website and update to
  * the latest version or replace it with other open source software.
- * Local validation is much more efficiently than by access the tokeninfo endpoint
+ * Local validation is much more efficiently than by access the token info endpoint
  * You'd better learn more about the JWT and JWK for understanding this demo
  * See more about JWT in https://jwt.io/
  * See more about JWK in http://self-issued.info/docs/draft-ietf-jose-json-web-key.html
@@ -65,43 +65,43 @@ class IDTokenParser {
      * Verify Id Token
      *
      * @param idToken Your IdToken
-     * @param callBack Asyn CallBack
+     * @param callBack Async CallBack
      * @throws InvalidPublicKeyException throw when InvalidPublicKeyException happened
      */
     @Throws(InvalidPublicKeyException::class, JWTDecodeException::class)
     fun verify(idToken: String?, callBack: ICallBack) {
         val decoder: DecodedJWT = JWT.decode(idToken)
-        getRSAPublicKeyByKidAsyn(decoder.getKeyId(), object : ICallBack() {
-            fun onSuccess() {
+        getRSAPublicKeyByKidAsyn(decoder.keyId, object : ICallBack {
+            override fun onSuccess() {
                 try {
                     val algorithm: Algorithm = Algorithm.RSA256(mRSAPublicKey, null)
                     val verifier: JWTVerifier = JWT.require(algorithm).build()
                     val jsonObject = JSONObject(
                         String(
                             Base64.decode(
-                                decoder.getPayload(),
+                                decoder.payload,
                                 Base64.DEFAULT
                             )
                         )
                     )
                     // Verify the value of iss
-                    if (!decoder.getIssuer().equals(Constant.ID_TOKEN_ISSUE)) {
+                    if (decoder.issuer != Constant.ID_TOKEN_ISSUE) {
                         callBack.onFailed()
                         return
                     }
                     // Verify your app’s client ID.
-                    val clientId: String = decoder.getAudience().get(0)
-                    if (decoder.getAudience().size() > 0) {
-                        if (!decoder.getAudience().get(0).equals(Constant.CLIENT_ID)) {
+                    val clientId: String = decoder.audience[0]
+                    if (decoder.audience.size > 0) {
+                        if (decoder.audience[0] != Constant.CLIENT_ID) {
                             callBack.onFailed()
                             return
                         }
                     }
                     // verify signature
                     verifier.verify(decoder)
-                    jsonObject.put("alg", decoder.getAlgorithm())
-                    jsonObject.put("typ", decoder.getType())
-                    jsonObject.put("kid", decoder.getKeyId())
+                    jsonObject.put("alg", decoder.algorithm)
+                    jsonObject.put("typ", decoder.type)
+                    jsonObject.put("kid", decoder.keyId)
                     callBack.onSuccess(jsonObject.toString())
                 } catch (e: JWTDecodeException) {
                     callBack.onFailed()
@@ -120,8 +120,8 @@ class IDTokenParser {
                 }
             }
 
-            fun onSuccess(result: String?) {}
-            fun onFailed() {
+            override fun onSuccess(result: String?) {}
+            override fun onFailed() {
                 callBack.onFailed()
             }
         })
@@ -133,13 +133,13 @@ class IDTokenParser {
      * In the demo we cache it in a map
      *
      * @param keyId Input keyId
-     * @param callBack asyn callback
+     * @param callBack async callback
      * @throws InvalidPublicKeyException throw when InvalidPublicKeyException happened
      */
     @Throws(InvalidPublicKeyException::class)
     private fun getRSAPublicKeyByKidAsyn(keyId: String, callBack: ICallBack) {
-        getJwks(object : ICallBack() {
-            fun onSuccess() {
+        getJwks(object : ICallBack {
+            override fun onSuccess() {
                 if (keyId2PublicKey[keyId] != null) {
                     mRSAPublicKey = keyId2PublicKey[keyId]
                     callBack.onSuccess()
@@ -161,16 +161,12 @@ class IDTokenParser {
                         callBack.onSuccess()
                     } catch (e: Exception) {
                         mRSAPublicKey = null
-                        Log.i(
-                            TAG,
-                            "getRSAPublicKeyByKid failed: " + e.message
-                        )
                     }
                 }
             }
 
-            fun onSuccess(keys: String?) {}
-            fun onFailed() {
+            override fun onSuccess(keys: String?) {}
+            override fun onFailed() {
                 mRSAPublicKey = null
             }
         })
@@ -203,20 +199,19 @@ class IDTokenParser {
      */
     private fun getJwks(iCallBack: ICallBack) {
         val okHttpClient = OkHttpClient()
-        val request: Request = Builder()
+        val request: Request = Request.Builder()
             .url(Constant.CERT_URL)
             .build()
         val call: Call = okHttpClient.newCall(request)
-        call.enqueue(object : Callback() {
-            fun onFailure(call: Call?, e: IOException?) {
-                Log.i(TAG, "Get ID Token failed.")
+        call.enqueue(object : Callback {
+            override fun onFailure(call: Call?, e: IOException?) {
                 iCallBack.onFailed()
             }
 
-            fun onResponse(call: Call?, response: Response) {
-                if (response.isSuccessful()) {
+            override fun onResponse(call: Call?, response: Response) {
+                if (response.isSuccessful) {
                     try {
-                        val res: String = response.body().string()
+                        val res: String = response.body()!!.string()
                         val jsonObject = JSONObject(res)
                         mJsonArray = jsonObject.getJSONArray("keys")
                         iCallBack.onSuccess()
@@ -260,7 +255,7 @@ class IDTokenParser {
             null,
             additionalAttributes
         )
-        return jwk.getPublicKey()
+        return jwk.publicKey as RSAPublicKey
     }
 
     companion object {

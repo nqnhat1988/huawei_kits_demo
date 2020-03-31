@@ -12,4 +12,7 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
+    <string name="login_with_token_id">Login with Token ID</string>
+    <string name="login_with_authen_code">Login with Authentication Code</string>
+    <string name="login_with_silent">Login silently</string>
 </resources>
