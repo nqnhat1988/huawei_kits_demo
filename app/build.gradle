@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'com.huawei.agconnect'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -16,10 +16,25 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file("keystore.jks")
+            keyAlias 'key_hmskits'
+            keyPassword 'allinone'
+            storePassword 'allinone'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            debuggable true
+        }
+        debug {
+            signingConfig signingConfigs.release
+            debuggable true
         }
     }
 
@@ -50,12 +65,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation 'com.huawei.agconnect:agconnect-core:1.0.0.300'
     implementation 'com.huawei.hms:hwid:4.0.0.300'
     implementation "com.squareup.okhttp3:okhttp:3.14.2"
-    implementation 'com.squareup.okio:okio:1.14.1'
+    implementation 'com.squareup.okio:okio:2.1.0'
     implementation 'com.auth0:java-jwt:3.8.2'
     implementation 'com.auth0:jwks-rsa:0.8.3'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'com.android.support:multidex:1.0.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

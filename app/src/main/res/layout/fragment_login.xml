@@ -15,25 +15,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             android:orientation="vertical">
             <Button
                 android:id="@+id/btn_login_with_token"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:drawableStart="@drawable/hw_logo_btn1"
-                android:text="@string/login_with_token_id" />
+                android:background="@color/hwid_auth_button_color_red"
+                android:textColor="@color/hwid_auth_button_color_text_white"
+                android:text="@string/login_with_token_id"
+                android:drawableStart="@drawable/hw_logo2" />
             <Button
+                android:layout_marginTop="16dp"
                 android:id="@+id/btn_login_with_auth_code"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:drawableStart="@drawable/hw_logo_btn1"
+                android:textColor="@color/hwid_auth_button_color_text_white"
+                android:background="@color/hwid_auth_button_color_blue"
+                android:drawableStart="@drawable/hw_logo2"
                 android:text="@string/login_with_authen_code" />
             <Button
-                android:id="@+id/btn_login_with_silent"
+                android:layout_marginTop="16dp"
+                android:id="@+id/btn_sign_out"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:drawableStart="@drawable/hw_logo_btn1"
-                android:text="@string/login_with_silent" />
+                android:text="@string/signout" />
+
+            <Button
+                android:layout_marginTop="16dp"
+                android:id="@+id/btn_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/hms_cancel" />
         </LinearLayout>
 
     </ScrollView>
