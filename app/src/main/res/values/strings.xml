@@ -9,7 +9,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_push">Push</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_map">Map</string>
 
     <string name="home_second">Home Second</string>
     <string name="login_with_token_id">Login with Token ID</string>

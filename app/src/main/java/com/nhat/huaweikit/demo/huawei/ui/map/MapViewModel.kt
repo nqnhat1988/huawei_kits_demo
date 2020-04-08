@@ -1,13 +1,13 @@
-package com.nhat.huaweikit.demo.huawei.ui.slideshow
+package com.nhat.huaweikit.demo.huawei.ui.map
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class MapViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is slideshow Fragment"
+        value = "Finding your location"
     }
     val text: LiveData<String> = _text
 }
