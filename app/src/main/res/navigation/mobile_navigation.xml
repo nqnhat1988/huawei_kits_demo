@@ -13,10 +13,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.nhat.huaweikit.demo.huawei.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_push"
+        android:name="com.nhat.huaweikit.demo.huawei.ui.push.PushFragment"
+        android:label="@string/menu_push"
+        tools:layout="@layout/fragment_push" />
 
     <fragment
         android:id="@+id/nav_slideshow"
