@@ -16,5 +16,9 @@
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_map" />
+        <item
+            android:id="@+id/nav_health"
+            android:icon="@drawable/ic_healing_black_24dp"
+            android:title="@string/menu_health" />
     </group>
 </menu>

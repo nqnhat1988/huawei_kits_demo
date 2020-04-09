@@ -1,9 +1,7 @@
 package com.nhat.huaweikit.demo.huawei
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.commit
-import com.nhat.huaweikit.demo.huawei.ui.login.LoginFragment
+import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
 
