@@ -168,8 +168,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onDestroy() {
         removeLocationUpdatesWithCallback()
+        mapView?.onDestroy()
         super.onDestroy()
-        mapView.onDestroy()
     }
 
     override fun onPause() {
