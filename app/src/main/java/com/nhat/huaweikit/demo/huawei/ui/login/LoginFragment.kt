@@ -21,6 +21,7 @@ import com.nhat.huaweikit.demo.huawei.Constant
 import com.nhat.huaweikit.demo.huawei.R
 import com.nhat.huaweikit.demo.huawei.common.ICallBack
 import com.nhat.huaweikit.demo.huawei.common.IDTokenParser
+import com.nhat.huaweikit.demo.huawei.ui.health.HealthFragment
 import kotlinx.android.synthetic.main.fragment_login.*
 
 
@@ -30,7 +31,7 @@ class LoginFragment : Fragment() {
     private lateinit var mAuthParams: HuaweiIdAuthParams
     private lateinit var mAuthManager: HuaweiIdAuthService
 
-    private val TAG = LoginFragment::class.java.simpleName
+    private val TAG = HealthFragment::class.java.simpleName
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

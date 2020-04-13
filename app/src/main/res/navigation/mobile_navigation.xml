@@ -13,14 +13,20 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.nhat.huaweikit.demo.huawei.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_push"
+        android:name="com.nhat.huaweikit.demo.huawei.ui.push.PushFragment"
+        android:label="@string/menu_push"
+        tools:layout="@layout/fragment_push" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.nhat.huaweikit.demo.huawei.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_map"
+        android:name="com.nhat.huaweikit.demo.huawei.ui.map.MapFragment"
+        android:label="@string/menu_map"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/nav_health"
+        android:name="com.nhat.huaweikit.demo.huawei.ui.health.HealthFragment"
+        android:label="@string/menu_health"
+        tools:layout="@layout/fragment_health" />
 </navigation>

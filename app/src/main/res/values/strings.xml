@@ -8,12 +8,13 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_push">Push</string>
+    <string name="menu_map">Map</string>
 
     <string name="home_second">Home Second</string>
     <string name="login_with_token_id">Login with Token ID</string>
     <string name="login_with_authen_code">Login with Authentication Code</string>
     <string name="login_with_silent">Login silently</string>
     <string name="signout">Sign out</string>
+    <string name="menu_health">Health</string>
 </resources>
