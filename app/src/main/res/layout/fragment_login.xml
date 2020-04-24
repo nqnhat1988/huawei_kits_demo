@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--TODO split 2 build variant-->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.health.HealthFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <ScrollView
@@ -17,6 +15,12 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:orientation="vertical">
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_google_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/btn_login_with_token"
                 android:layout_width="match_parent"

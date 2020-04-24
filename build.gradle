@@ -8,13 +8,17 @@ buildscript {
         maven { url 'http://developer.huawei.com/repo/' } // HUAWEI Maven repository
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.2'
+        classpath 'com.android.tools.build:gradle:3.6.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.huawei.agconnect:agcp:1.2.0.300'  // HUAWEI agcp plugin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath "com.dicedmelon.gradle:jacoco-android:0.1.4"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0-alpha01"
     }
 }
+
+apply from: 'dependencies.gradle'
 
 allprojects {
     repositories {
