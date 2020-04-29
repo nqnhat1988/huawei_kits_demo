@@ -15,8 +15,8 @@ android {
         applicationId "com.nhat.huaweikit.demo.huawei"
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
         targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
-        versionCode 1
-        versionName "1.0"
+        versionCode 1010000
+        versionName "1.1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
