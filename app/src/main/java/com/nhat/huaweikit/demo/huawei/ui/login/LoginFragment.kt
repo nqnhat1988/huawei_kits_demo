@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.nhat.huaweikit.demo.gms_services.GoogleAccountServices
+import com.nhat.huaweikit.demo.huawei.BuildConfig
 import com.nhat.huaweikit.demo.huawei.R
 import com.nhat.huaweikit.demo.huawei.common.BaseFragment
 import com.nhat.huaweikit.demo.huawei.common.finishWithResult
@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 
+@Suppress("PLUGIN_WARNING")
 class LoginFragment : BaseFragment<UserViewModel>() {
 
     companion object {
@@ -55,7 +56,7 @@ class LoginFragment : BaseFragment<UserViewModel>() {
         userViewModel.userLiveData.observe(viewLifecycleOwner, Observer {
 
         })
-        val isGMS = accountServices is GoogleAccountServices
+        val isGMS = BuildConfig.FLAVOR == "gms"
 
         btn_google_sign_in.visibility = isGMS.visible()
         btn_login_with_token.visibility = isGMS.not().visible()

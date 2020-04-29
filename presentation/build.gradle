@@ -14,21 +14,6 @@ android {
         multiDexEnabled = true
     }
 
-    buildTypes {
-        debug {
-            debuggable true
-        }
-        gms {
-        }
-        hmsDebug {
-            initWith debug
-        }
-        hms {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
     dexOptions {
         preDexLibraries = false
         dexInProcess = false

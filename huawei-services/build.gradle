@@ -25,23 +25,6 @@ android {
         }
     }
 
-    buildTypes {
-        gms {
-            signingConfig signingConfigs.release
-        }
-        hmsDebug {
-            initWith debug
-        }
-        hms {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-        debug {
-            signingConfig signingConfigs.release
-            debuggable true
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

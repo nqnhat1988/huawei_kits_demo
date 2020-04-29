@@ -35,19 +35,21 @@ android {
             signingConfig signingConfigs.release
             debuggable true
         }
-        gms {
-            signingConfig signingConfigs.release
-        }
-        hmsDebug {
-            initWith debug
-        }
-        hms {
+        release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
     }
-
+    flavorDimensions "version"
+    productFlavors {
+        gms {
+            dimension "version"
+        }
+        hms {
+            dimension "version"
+        }
+    }
     dexOptions {
         preDexLibraries = false
         dexInProcess = false
@@ -85,7 +87,11 @@ kapt {
 dependencies {
     def mobileUiDependencies = rootProject.ext.mobileUiDependencies
     def mobileUiTestDependencies = rootProject.ext.mobileUiTestDependencies
-    
+
+    //local project dependencies
+    hmsImplementation project(path: ':huawei-services')
+    gmsImplementation project(path: ':gms-services')
+    implementation project(path: ':presentation')
     implementation project(':domain')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -102,12 +108,7 @@ dependencies {
     kapt mobileUiDependencies.daggerCompiler
     kapt mobileUiDependencies.daggerProcessor
 
-    //arch
-    implementation presentationDependencies.archRuntime
-    implementation presentationDependencies.archExtensions
-    implementation "android.arch.persistence.room:rxjava2:1.1.1"
-    kapt presentationDependencies.archCompiler
-
+    //UI
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -116,21 +117,17 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.2.2'
     implementation 'androidx.navigation:navigation-ui:2.2.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 
     implementation "com.squareup.okhttp3:okhttp:3.14.2"
     implementation 'com.squareup.okio:okio:2.2.2'
 
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    implementation 'com.android.support:multidex:1.0.3'
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation project(path: ':huawei-services')
-    implementation project(path: ':gms-services')
-    implementation project(path: ':presentation')
 }
 
 androidExtensions {

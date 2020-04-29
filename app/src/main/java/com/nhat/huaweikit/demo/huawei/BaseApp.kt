@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import androidx.fragment.app.Fragment
 import com.nhat.huaweikit.demo.huawei.injection.DaggerApplicationComponent
-import com.nhat.huaweikit.demo.hwhelper.NDAnalytics
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -14,8 +13,6 @@ import javax.inject.Inject
 
 
 abstract class BaseApp : Application(), HasActivityInjector, HasSupportFragmentInjector {
-    private val analyticsHelper by lazy { NDAnalytics(this) }
-
     @Inject
     lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
     @Inject
@@ -29,12 +26,6 @@ abstract class BaseApp : Application(), HasActivityInjector, HasSupportFragmentI
             .build()
             .inject(this)
         setupTimber()
-        analyticsHelper.start()
-    }
-
-    override fun onTerminate() {
-        super.onTerminate()
-        analyticsHelper.stop()
     }
 
     private fun setupTimber() {

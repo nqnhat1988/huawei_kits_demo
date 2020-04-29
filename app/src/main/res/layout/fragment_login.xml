@@ -25,8 +25,8 @@
                 android:id="@+id/btn_login_with_token"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@color/hwid_auth_button_color_red"
-                android:textColor="@color/hwid_auth_button_color_text_white"
+                android:background="@android:color/holo_red_light"
+                android:textColor="@android:color/white"
                 android:text="@string/login_with_token_id"
                 android:drawableStart="@drawable/hw_logo2" />
             <Button
@@ -34,8 +34,8 @@
                 android:id="@+id/btn_login_with_auth_code"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:textColor="@color/hwid_auth_button_color_text_white"
-                android:background="@color/hwid_auth_button_color_blue"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_blue_light"
                 android:drawableStart="@drawable/hw_logo2"
                 android:text="@string/login_with_authen_code" />
             <Button

@@ -2,7 +2,7 @@ package com.nhat.huaweikit.demo.huawei
 
 import com.nhat.huaweikit.demo.huawei.injection.DaggerApplicationComponent
 
-class HmsApp : BaseApp() {
+class GmsApp : BaseApp() {
     override fun onCreate() {
         super.onCreate()
         DaggerApplicationComponent

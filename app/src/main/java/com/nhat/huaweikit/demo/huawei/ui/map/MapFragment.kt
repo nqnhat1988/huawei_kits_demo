@@ -1,6 +1,6 @@
 package com.nhat.huaweikit.demo.huawei.ui.map
 
-import android.Manifest
+import android.Manifest.permission.*
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
@@ -12,12 +12,12 @@ import com.nhat.huaweikit.demo.huawei.common.BaseFragment
 import com.nhat.huaweikit.demo.nd_services.Constant
 import com.nhat.huaweikit.demo.nd_services.LocationData
 import com.nhat.huaweikit.demo.nd_services.LocationServices
+import com.nhat.huaweikit.demo.nd_services.MapServices
 import kotlinx.android.synthetic.main.fragment_map.*
 import javax.inject.Inject
 
 
 class MapFragment : BaseFragment<Void>()
-//    , OnMapReadyCallback
 {
     companion object {
         const val TAG = "MapFragment"
@@ -26,19 +26,25 @@ class MapFragment : BaseFragment<Void>()
     @Inject
     lateinit var locationServices: LocationServices
 
+    @Inject
+    lateinit var mapServices: MapServices
+
     lateinit var locationCallback: (location: LocationData) -> Unit
-    //Huawei map
-//    private var hMap: HuaweiMap? = null
 
-    private val RUNTIME_PERMISSIONS = arrayOf(
-        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.ACCESS_COARSE_LOCATION,
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.INTERNET
-    )
-
-//    private val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
+    private val RUNTIME_PERMISSIONS = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        arrayOf(
+            ACCESS_COARSE_LOCATION,
+            ACCESS_FINE_LOCATION,
+            INTERNET,
+            ACCESS_BACKGROUND_LOCATION
+        )
+    } else {
+        arrayOf(
+            ACCESS_COARSE_LOCATION,
+            ACCESS_FINE_LOCATION,
+            INTERNET
+        )
+    }
 
     override val layoutId: Int
         get() = R.layout.fragment_map
@@ -61,6 +67,7 @@ class MapFragment : BaseFragment<Void>()
         locationCallback = {
             text_my_location.text = it.toString()
         }
+
         locationServices.init(requireActivity())
 
         if (!hasPermissions(requireContext(), RUNTIME_PERMISSIONS)) {
@@ -69,15 +76,7 @@ class MapFragment : BaseFragment<Void>()
             locationServices.requestLocationUpdatesWithCallback(locationCallback)
         }
 
-        //get mapview instance
-//        var mapViewBundle: Bundle? = null
-//        if (savedInstanceState != null) {
-//            mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY)
-//        }
-//        mapView.onCreate(mapViewBundle)
-//        //get map instance
-//        mapView.getMapAsync(this)
-
+        mapServices.init(map_container, savedInstanceState)
     }
 
     private fun hasPermissions(
@@ -113,35 +112,30 @@ class MapFragment : BaseFragment<Void>()
         }
     }
 
-//    override fun onMapReady(map: HuaweiMap?) {
-//        Log.d(TAG, "onMapReady: ");
-//        hMap = map
-//        hMap?.isMyLocationEnabled = true
-//    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        mapView.onStart()
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        mapView.onStop()
-//    }
-//
+
+    override fun onStart() {
+        super.onStart()
+        mapServices.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mapServices.onStop()
+    }
+
 override fun onDestroy() {
     locationServices.removeLocationUpdatesWithCallback()
-//        mapView?.onDestroy()
+    mapServices.onDestroy()
     super.onDestroy()
 }
-//
-//    override fun onPause() {
-//        mapView.onPause()
-//        super.onPause()
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        mapView.onResume()
-//    }
+
+    override fun onPause() {
+        mapServices.onPause()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapServices.onResume()
+    }
 }
