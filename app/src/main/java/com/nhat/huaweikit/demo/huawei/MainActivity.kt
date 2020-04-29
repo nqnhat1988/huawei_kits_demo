@@ -41,11 +41,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        navView.getHeaderView(0).setOnClickListener {
-            drawerLayout.closeDrawers()
-            startActivityForResult(Intent(this, LoginActivity::class.java), LOGIN_REQUEST_CODE)
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

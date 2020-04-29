@@ -34,3 +34,4 @@
 -keep class com.hianalytics.android.**{*;}
 -keep interface com.huawei.hms.analytics.type.HAEventType{*;}
 -keep interface com.huawei.hms.analytics.type.HAParamType{*;}
+

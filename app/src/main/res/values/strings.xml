@@ -17,4 +17,9 @@
     <string name="login_with_silent">Login silently</string>
     <string name="signout">Sign out</string>
     <string name="menu_health">Health</string>
+	
+    <string name="hms_cancel">Cancel</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="state_loading_current_user">Getting current user</string>
+    <string name="format_user_name">Username: %s</string>
 </resources>
