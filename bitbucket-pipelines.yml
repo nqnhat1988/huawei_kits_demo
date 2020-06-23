@@ -9,6 +9,7 @@ pipelines:
         caches:
           - gradle
         script:
+          - bash ./license.sh
           - ./gradlew assemble --stacktrace
   tags:
     gms-*:
@@ -16,12 +17,14 @@ pipelines:
           caches:
             - gradle
           script:
+            - bash ./license.sh
             - ./gradlew assembleGms --stacktrace
     hms-*:
       - step:
           caches:
             - gradle
           script:
+            - bash ./license.sh
             - ./gradlew assembleHms --stacktrace
     branches:
       production/gms:
@@ -29,10 +32,12 @@ pipelines:
             caches:
               - gradle
             script:
+              - bash ./license.sh
               - ./gradlew assembleGmsRelease --stacktrace
       production/hms:
         - step:
             caches:
               - gradle
             script:
+              - bash ./license.sh
               - ./gradlew assembleHmsRelease --stacktrace
