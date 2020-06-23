@@ -9,30 +9,30 @@ pipelines:
         caches:
           - gradle
         script:
-          - bash ./gradlew assemble --stacktrace
+          - ./gradlew assemble --stacktrace
   tags:
     gms-*:
       - step:
           caches:
             - gradle
           script:
-            - bash ./gradlew assembleGms --stacktrace
+            - ./gradlew assembleGms --stacktrace
     hms-*:
       - step:
           caches:
             - gradle
           script:
-            - bash ./gradlew assembleHms --stacktrace
+            - ./gradlew assembleHms --stacktrace
     branches:
       production/gms:
         - step:
             caches:
               - gradle
             script:
-              - bash ./gradlew assembleGmsRelease --stacktrace
+              - ./gradlew assembleGmsRelease --stacktrace
       production/hms:
         - step:
             caches:
               - gradle
             script:
-              - bash ./gradlew assembleHmsRelease --stacktrace
+              - ./gradlew assembleHmsRelease --stacktrace
