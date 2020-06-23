@@ -41,13 +41,13 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    flavorDimensions "version"
+    flavorDimensions "releaseCycle"
     productFlavors {
         gms {
-            dimension "version"
+            dimension "releaseCycle"
         }
         hms {
-            dimension "version"
+            dimension "releaseCycle"
         }
     }
     dexOptions {
