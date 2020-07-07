@@ -56,15 +56,16 @@ dependencies {
 
     implementation 'com.auth0:java-jwt:3.8.2'
     implementation 'com.auth0:jwks-rsa:0.8.3'
-    implementation 'com.huawei.agconnect:agconnect-core:1.0.0.300'
+    implementation 'com.huawei.agconnect:agconnect-core:1.3.1.300'
     implementation 'com.huawei.hms:hianalytics:4.0.2.300'
     implementation 'com.huawei.hms:push:4.0.2.300'
     implementation 'com.huawei.hms:maps:4.0.0.302'
-    implementation 'com.huawei.hms:location:4.0.2.300'
+    implementation 'com.huawei.hms:location:5.0.0.302'
     implementation "com.huawei.hms:network-grs:4.0.2.300"
-    implementation 'com.huawei.hms:base:4.0.2.300'
+    implementation 'com.huawei.hms:base:5.0.0.300'
     implementation 'com.huawei.hms:hwid:4.0.0.300'
     implementation 'com.huawei.hms:hihealth-base:4.0.0.350'
+    implementation 'com.huawei.hms:site:4.0.3.300'
 
     api project(path: ':midle-services')
 }

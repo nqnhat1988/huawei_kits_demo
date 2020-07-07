@@ -22,4 +22,5 @@
     <string name="action_sign_in">Sign In</string>
     <string name="state_loading_current_user">Getting current user</string>
     <string name="format_user_name">Username: %s</string>
+    <string name="start_geofence">Start GeoFence</string>
 </resources>

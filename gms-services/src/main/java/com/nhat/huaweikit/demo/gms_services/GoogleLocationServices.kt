@@ -120,4 +120,12 @@ class GoogleLocationServices :
             Log.e(TAG, "removeLocationUpdatesWithCallback exception:" + e.message)
         }
     }
+
+    override fun requestGeoFenceCallback() {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeWithID() {
+        TODO("Not yet implemented")
+    }
 }

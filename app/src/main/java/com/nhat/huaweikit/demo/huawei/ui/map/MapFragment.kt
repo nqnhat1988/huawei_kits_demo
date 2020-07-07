@@ -29,7 +29,7 @@ class MapFragment : BaseFragment<Void>()
     @Inject
     lateinit var mapServices: MapServices
 
-    lateinit var locationCallback: (location: LocationData) -> Unit
+    private lateinit var locationCallback: (location: LocationData) -> Unit
 
     private val RUNTIME_PERMISSIONS = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         arrayOf(
@@ -77,6 +77,10 @@ class MapFragment : BaseFragment<Void>()
         }
 
         mapServices.init(map_container, savedInstanceState)
+
+        btn_start_geo_fence.setOnClickListener {
+            locationServices.requestGeoFenceCallback()
+        }
     }
 
     private fun hasPermissions(
@@ -123,11 +127,12 @@ class MapFragment : BaseFragment<Void>()
         mapServices.onStop()
     }
 
-override fun onDestroy() {
-    locationServices.removeLocationUpdatesWithCallback()
-    mapServices.onDestroy()
-    super.onDestroy()
-}
+    override fun onDestroy() {
+        locationServices.removeLocationUpdatesWithCallback()
+        locationServices.removeWithID()
+        mapServices.onDestroy()
+        super.onDestroy()
+    }
 
     override fun onPause() {
         mapServices.onPause()
