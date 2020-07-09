@@ -63,7 +63,7 @@ class HuaweiLocationServices :
                 .setRoundArea(
                     10.782593,
                     106.701176,
-                    100f
+                    100f //meters
                 ) // Trigger callback when a user enters or leaves the geofence.
                 .setDwellDelayTime(TimeUnit.SECONDS.toMillis(5).toInt())
                 .setConversions(
