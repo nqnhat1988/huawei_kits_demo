@@ -1,2 +1,2 @@
 # huawei_kits_demo
-Test pipeline 7
+Test pipeline 8
