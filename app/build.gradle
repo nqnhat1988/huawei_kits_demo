@@ -6,6 +6,16 @@ apply plugin: "com.hiya.jacoco-android"
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'com.huawei.agconnect'
+apply plugin: 'ru.cian.huawei-publish'
+
+huaweiPublish {
+    instances {
+        hmsRelease {
+            credentialsPath = "$rootDir/huawei-credentials-release.json"
+        }
+    }
+}
+
 android {
 
     def globalConfiguration = rootProject.extensions.getByName("ext")
