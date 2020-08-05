@@ -14,8 +14,9 @@ import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
 import com.nhat.huaweikit.demo.huawei.common.ICallBack
 import com.nhat.huaweikit.demo.hwhelper.common.IDTokenParser
 import com.nhat.huaweikit.demo.nd_services.AccountServices
+import javax.inject.Inject
 
-class HuaweiAccountServices : AccountServices {
+class HuaweiAccountServices @Inject constructor() : AccountServices {
     companion object {
         //login
         const val REQUEST_SIGN_IN_LOGIN = 1002

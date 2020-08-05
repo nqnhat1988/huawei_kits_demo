@@ -1,3 +1,4 @@
+include ':mobile-services'
 rootProject.name='HSM Kits'
 include ':app'
 include ':huawei-services'

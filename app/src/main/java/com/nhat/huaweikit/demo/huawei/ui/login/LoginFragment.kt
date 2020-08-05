@@ -7,12 +7,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.mobile_services.MobileAccountServices
 import com.nhat.huaweikit.demo.huawei.BuildConfig
 import com.nhat.huaweikit.demo.huawei.R
 import com.nhat.huaweikit.demo.huawei.common.BaseFragment
 import com.nhat.huaweikit.demo.huawei.common.finishWithResult
 import com.nhat.huaweikit.demo.huawei.common.visible
-import com.nhat.huaweikit.demo.nd_services.AccountServices
 import com.nhat.huaweikit.demo.nd_services.Constant
 import com.nhat.huaweikit.demo.presentation.user.UserViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -28,9 +28,11 @@ class LoginFragment : BaseFragment<UserViewModel>() {
 
     private lateinit var userViewModel: UserViewModel
 
-    @Inject
-    lateinit var accountServices: AccountServices
+//    @Inject
+//    lateinit var accountServices: AccountServices
 
+    @Inject
+    lateinit var accountServices: MobileAccountServices
 
     private fun signIn() {
         accountServices.signIn(this)

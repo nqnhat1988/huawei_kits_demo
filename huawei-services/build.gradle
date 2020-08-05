@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.huawei.agconnect'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -68,4 +69,11 @@ dependencies {
     implementation 'com.huawei.hms:site:4.0.3.300'
 
     api project(path: ':midle-services')
+
+    implementation mobileUiDependencies.javaxInject
+    implementation mobileUiDependencies.dagger
+    implementation mobileUiDependencies.daggerSupport
+    implementation mobileUiDependencies.daggerAndroid
+    kapt mobileUiDependencies.daggerCompiler
+    kapt mobileUiDependencies.daggerProcessor
 }

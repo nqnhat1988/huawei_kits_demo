@@ -102,6 +102,7 @@ dependencies {
     //local project dependencies
     hmsImplementation project(path: ':huawei-services')
     gmsImplementation project(path: ':gms-services')
+    implementation project(':mobile-services')
     implementation project(path: ':presentation')
     implementation project(':domain')
 

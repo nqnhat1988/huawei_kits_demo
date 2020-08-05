@@ -55,14 +55,13 @@ class HuaweiLocationServices :
         geoFenceList = ArrayList()
 
         idList = ArrayList()
-
         geoFenceList.add(
             Geofence.Builder()
                 .setUniqueId("mGeofence")
                 .setValidContinueTime(TimeUnit.MINUTES.toMillis(10))
                 .setRoundArea(
-                    10.782593,
-                    106.701176,
+                    10.782593, //hard code my home location
+                    106.701176, //hard code my home location
                     100f //meters
                 ) // Trigger callback when a user enters or leaves the geofence.
                 .setDwellDelayTime(TimeUnit.SECONDS.toMillis(5).toInt())
