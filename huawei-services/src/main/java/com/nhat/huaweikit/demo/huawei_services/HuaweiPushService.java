@@ -5,7 +5,7 @@ import android.util.Log;
 import com.huawei.hms.push.HmsMessageService;
 import com.huawei.hms.push.RemoteMessage;
 
-public class MyPushService extends HmsMessageService {
+public class HuaweiPushService extends HmsMessageService {
     private static final String TAG = "PushDemoLog";
 
     @Override

@@ -8,7 +8,7 @@ import com.huawei.hms.analytics.HiAnalyticsTools
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NDAnalytics(context: Context) {
+class HuaweiAnalyticsServices(context: Context) {
     private var instance: HiAnalyticsInstance
 
     init {
