@@ -10,12 +10,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.nhat.huaweikit.demo.nd_services.AccountServices
-import com.nhat.huaweikit.demo.nd_services.Constant
+import com.nhat.icore_services.common.Constant
+import com.nhat.icore_services.services.AccountServices
 import javax.inject.Inject
 
 
-class GoogleAccountServices @Inject constructor() : AccountServices {
+class GoogleAccountServices @Inject constructor() :
+    AccountServices {
     companion object {
         const val TAG = "GoogleAccountServices"
     }

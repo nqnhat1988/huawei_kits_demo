@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nhat.huaweikit.demo.hwhelper">
+    package="com.nhat.huaweikit.demo.huawei_services">
     <!--HMS-SDK need network permission while check if upgrade is neccessary-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!--HMS-SDK need network permission while hms is upgrading-->
@@ -23,7 +23,7 @@
 
     <application>
         <receiver
-            android:name="com.nhat.huaweikit.demo.hwhelper.common.GeoFenceBroadcastReceiver"
+            android:name="com.nhat.huaweikit.demo.huawei_services.common.GeoFenceBroadcastReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.nhat.huaweikit.demo.hwhelper.common.GeoFenceBroadcastReceiver.ACTION_PROCESS_LOCATION" />

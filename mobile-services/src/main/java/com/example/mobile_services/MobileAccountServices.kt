@@ -4,10 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.nhat.huaweikit.demo.gms_services.GoogleAccountServices
-import com.nhat.huaweikit.demo.hwhelper.HuaweiAccountServices
-import com.nhat.huaweikit.demo.nd_services.AccountServices
-import com.nhat.huaweikit.demo.nd_services.MobileServicesEnum
-import com.nhat.huaweikit.demo.nd_services.SafeCheck
+import com.nhat.huaweikit.demo.huawei_services.HuaweiAccountServices
+import com.nhat.icore_services.common.MobileServicesEnum
+import com.nhat.icore_services.common.SafeCheck
+import com.nhat.icore_services.services.AccountServices
 import javax.inject.Inject
 
 class MobileAccountServices @Inject constructor(
@@ -16,17 +16,17 @@ class MobileAccountServices @Inject constructor(
     safeCheck: SafeCheck
 ) : AccountServices {
 
-    private val mobileService = safeCheck.getMobileServices()
+    private val mobileServicesEnum = safeCheck.mobileServicesEnum
 
     private val accountServices: AccountServices by lazy {
-        when (mobileService) {
+        when (mobileServicesEnum) {
             MobileServicesEnum.HMS -> huaweiAccountServices
             MobileServicesEnum.GMS -> googleAccountServices
         }
     }
 
     private fun getAccountServices2(): AccountServices {
-        return when (mobileService) {
+        return when (mobileServicesEnum) {
             MobileServicesEnum.HMS -> huaweiAccountServices
             MobileServicesEnum.GMS -> googleAccountServices
         }

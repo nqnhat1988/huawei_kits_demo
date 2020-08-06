@@ -1,11 +1,11 @@
 package com.nhat.huaweikit.demo.huawei.injection.module
 
-import com.nhat.huaweikit.demo.hwhelper.HuaweiAccountServices
-import com.nhat.huaweikit.demo.hwhelper.HuaweiLocationServices
-import com.nhat.huaweikit.demo.hwhelper.HuaweiMapServices
-import com.nhat.huaweikit.demo.nd_services.AccountServices
-import com.nhat.huaweikit.demo.nd_services.LocationServices
-import com.nhat.huaweikit.demo.nd_services.MapServices
+import com.nhat.huaweikit.demo.huawei_services.HuaweiAccountServices
+import com.nhat.huaweikit.demo.huawei_services.HuaweiLocationServices
+import com.nhat.huaweikit.demo.huawei_services.HuaweiMapServices
+import com.nhat.icore_services.services.AccountServices
+import com.nhat.icore_services.services.LocationServices
+import com.nhat.icore_services.services.MapServices
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

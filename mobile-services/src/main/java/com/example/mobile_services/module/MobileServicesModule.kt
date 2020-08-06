@@ -4,8 +4,8 @@ import android.content.Context
 import com.example.mobile_services.MobileAccountServices
 import com.example.mobile_services.SafeCheckImpl
 import com.nhat.huaweikit.demo.gms_services.GoogleAccountServices
-import com.nhat.huaweikit.demo.hwhelper.HuaweiAccountServices
-import com.nhat.huaweikit.demo.nd_services.SafeCheck
+import com.nhat.huaweikit.demo.huawei_services.HuaweiAccountServices
+import com.nhat.icore_services.common.SafeCheck
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

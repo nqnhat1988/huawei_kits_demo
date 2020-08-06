@@ -9,10 +9,10 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import com.nhat.huaweikit.demo.huawei.R
 import com.nhat.huaweikit.demo.huawei.common.BaseFragment
-import com.nhat.huaweikit.demo.nd_services.Constant
-import com.nhat.huaweikit.demo.nd_services.LocationData
-import com.nhat.huaweikit.demo.nd_services.LocationServices
-import com.nhat.huaweikit.demo.nd_services.MapServices
+import com.nhat.icore_services.common.Constant
+import com.nhat.icore_services.common.LocationData
+import com.nhat.icore_services.services.LocationServices
+import com.nhat.icore_services.services.MapServices
 import kotlinx.android.synthetic.main.fragment_map.*
 import javax.inject.Inject
 

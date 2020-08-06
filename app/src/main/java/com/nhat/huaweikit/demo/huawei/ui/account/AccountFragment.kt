@@ -10,11 +10,11 @@ import com.nhat.huaweikit.demo.huawei.LoginActivity
 import com.nhat.huaweikit.demo.huawei.R
 import com.nhat.huaweikit.demo.huawei.common.BaseFragment
 import com.nhat.huaweikit.demo.huawei.common.visible
-import com.nhat.huaweikit.demo.nd_services.Constant.REQUEST_SIGN_IN_LOGIN_ACTIVITY
 import com.nhat.huaweikit.demo.presentation.data.Resource
 import com.nhat.huaweikit.demo.presentation.data.ResourceState
 import com.nhat.huaweikit.demo.presentation.model.UserView
 import com.nhat.huaweikit.demo.presentation.user.UserViewModel
+import com.nhat.icore_services.common.Constant.REQUEST_SIGN_IN_LOGIN_ACTIVITY
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class AccountFragment : BaseFragment<UserView>() {

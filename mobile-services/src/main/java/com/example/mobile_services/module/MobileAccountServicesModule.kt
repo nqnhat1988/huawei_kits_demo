@@ -1,7 +1,7 @@
 package com.example.mobile_services.module
 
 import com.nhat.huaweikit.demo.gms_services.GoogleAccountServices
-import com.nhat.huaweikit.demo.hwhelper.HuaweiAccountServices
+import com.nhat.huaweikit.demo.huawei_services.HuaweiAccountServices
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named

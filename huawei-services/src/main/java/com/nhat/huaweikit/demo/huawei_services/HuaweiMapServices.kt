@@ -1,19 +1,19 @@
-package com.nhat.huaweikit.demo.gms_services
+package com.nhat.huaweikit.demo.huawei_services
 
 import android.os.Bundle
 import android.view.ViewGroup
-import com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL
-import com.google.android.gms.maps.GoogleMapOptions
-import com.google.android.gms.maps.MapView
+import com.huawei.hms.maps.HuaweiMap.MAP_TYPE_NORMAL
+import com.huawei.hms.maps.HuaweiMapOptions
+import com.huawei.hms.maps.MapView
 import com.nhat.icore_services.services.MapServices
 
-class GoogleMapServices :
+class HuaweiMapServices :
     MapServices {
     override val mapBundleId: String
         get() = "MapViewBundleKey"
     private lateinit var mapView: MapView
     override fun init(container: ViewGroup, savedInstanceState: Bundle?) {
-        this.mapView = MapView(container.context, GoogleMapOptions().apply {
+        this.mapView = MapView(container.context, HuaweiMapOptions().apply {
             compassEnabled(true)
             zoomControlsEnabled(true)
             mapType(MAP_TYPE_NORMAL)

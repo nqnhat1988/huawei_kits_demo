@@ -13,8 +13,8 @@ import com.nhat.huaweikit.demo.huawei.R
 import com.nhat.huaweikit.demo.huawei.common.BaseFragment
 import com.nhat.huaweikit.demo.huawei.common.finishWithResult
 import com.nhat.huaweikit.demo.huawei.common.visible
-import com.nhat.huaweikit.demo.nd_services.Constant
 import com.nhat.huaweikit.demo.presentation.user.UserViewModel
+import com.nhat.icore_services.common.Constant
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
