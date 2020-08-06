@@ -6,8 +6,9 @@ import com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL
 import com.google.android.gms.maps.GoogleMapOptions
 import com.google.android.gms.maps.MapView
 import com.nhat.icore_services.services.MapServices
+import javax.inject.Inject
 
-class GoogleMapServices :
+class GoogleMapServices @Inject constructor() :
     MapServices {
     override val mapBundleId: String
         get() = "MapViewBundleKey"

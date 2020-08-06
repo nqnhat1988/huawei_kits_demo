@@ -16,9 +16,10 @@ import com.nhat.huaweikit.demo.huawei_services.common.GeoFenceBroadcastReceiver
 import com.nhat.icore_services.common.LocationData
 import com.nhat.icore_services.services.LocationServices
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 
-class HuaweiLocationServices :
+class HuaweiLocationServices @Inject constructor() :
     LocationServices {
     companion object {
         const val TAG = "HuaweiLocationServices"

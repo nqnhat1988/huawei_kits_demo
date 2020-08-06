@@ -1,4 +1,4 @@
-package com.example.mobile_services
+package com.example.mobile_services.services
 
 import android.app.Activity
 import android.content.Intent
@@ -8,15 +8,16 @@ import com.nhat.huaweikit.demo.huawei_services.HuaweiAccountServices
 import com.nhat.icore_services.common.MobileServicesEnum
 import com.nhat.icore_services.common.SafeCheck
 import com.nhat.icore_services.services.AccountServices
+import com.nhat.icore_services.services.BaseServices
 import javax.inject.Inject
 
 class MobileAccountServices @Inject constructor(
-    private val huaweiAccountServices: HuaweiAccountServices,
-    private val googleAccountServices: GoogleAccountServices,
+    huaweiAccountServices: HuaweiAccountServices,
+    googleAccountServices: GoogleAccountServices,
     safeCheck: SafeCheck
-) : AccountServices {
+) : AccountServices, BaseServices {
 
-    private val mobileServicesEnum = safeCheck.mobileServicesEnum
+    override val mobileServicesEnum = safeCheck.mobileServicesEnum
 
     private val accountServices: AccountServices by lazy {
         when (mobileServicesEnum) {
@@ -25,19 +26,12 @@ class MobileAccountServices @Inject constructor(
         }
     }
 
-    private fun getAccountServices2(): AccountServices {
-        return when (mobileServicesEnum) {
-            MobileServicesEnum.HMS -> huaweiAccountServices
-            MobileServicesEnum.GMS -> googleAccountServices
-        }
-    }
-
     override fun signIn(activity: Activity) {
-        getAccountServices2().signIn(activity)
+        accountServices.signIn(activity)
     }
 
     override fun signIn(fragment: Fragment) {
-        getAccountServices2().signIn(fragment)
+        accountServices.signIn(fragment)
     }
 
     override fun signInWithCode(activity: Activity) {

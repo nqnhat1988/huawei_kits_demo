@@ -14,8 +14,9 @@ import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.nhat.icore_services.common.LocationData
 import com.nhat.icore_services.services.LocationServices
+import javax.inject.Inject
 
-class GoogleLocationServices :
+class GoogleLocationServices @Inject constructor() :
     LocationServices {
     companion object {
         const val TAG = "GoogleLocationServices"
@@ -83,7 +84,7 @@ class GoogleLocationServices :
             settingsClient.checkLocationSettings(locationSettingsRequest)
                 .addOnSuccessListener {
                     Log.i(TAG, "check location settings success")
-                    // request location updates
+                    //FIXME request location updates
                     fusedLocationProviderClient
                         .requestLocationUpdates(
                             mLocationRequest,
@@ -127,10 +128,10 @@ class GoogleLocationServices :
     }
 
     override fun requestGeoFenceCallback() {
-        TODO("Not yet implemented")
+        //DO NOTHING
     }
 
     override fun removeWithID() {
-        TODO("Not yet implemented")
+        //DO NOTHING
     }
 }

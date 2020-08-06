@@ -19,7 +19,6 @@ import javax.inject.Singleton
         PresentationModule::class,
 //        RemoteModule::class,
         MobileServicesModule::class,
-        com.example.mobile_services.module.MobileServicesModule::class,
         UiModule::class
     ]
 )

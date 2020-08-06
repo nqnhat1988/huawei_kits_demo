@@ -1,4 +1,4 @@
-package com.example.mobile_services
+package com.example.mobile_services.common
 
 import android.content.Context
 import com.huawei.hms.api.ConnectionResult

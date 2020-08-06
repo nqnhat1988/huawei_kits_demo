@@ -6,8 +6,9 @@ import com.huawei.hms.maps.HuaweiMap.MAP_TYPE_NORMAL
 import com.huawei.hms.maps.HuaweiMapOptions
 import com.huawei.hms.maps.MapView
 import com.nhat.icore_services.services.MapServices
+import javax.inject.Inject
 
-class HuaweiMapServices :
+class HuaweiMapServices @Inject constructor() :
     MapServices {
     override val mapBundleId: String
         get() = "MapViewBundleKey"
