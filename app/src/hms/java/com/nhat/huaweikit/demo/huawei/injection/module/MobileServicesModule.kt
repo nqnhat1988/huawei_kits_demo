@@ -1,5 +1,6 @@
 package com.nhat.huaweikit.demo.huawei.injection.module
 
+import com.example.mobile_services.module.MobileSafeCheckModule
 import com.nhat.huaweikit.demo.huawei_services.HuaweiAccountServices
 import com.nhat.huaweikit.demo.huawei_services.HuaweiLocationServices
 import com.nhat.huaweikit.demo.huawei_services.HuaweiMapServices
@@ -10,7 +11,11 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
-@Module
+@Module(
+    includes = [
+        MobileSafeCheckModule::class
+    ]
+)
 abstract class MobileServicesModule {
     @Module
     companion object {

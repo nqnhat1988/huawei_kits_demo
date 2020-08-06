@@ -1,7 +1,5 @@
 package com.example.mobile_services.module
 
-import android.content.Context
-import com.example.mobile_services.common.SafeCheckImpl
 import com.example.mobile_services.services.MobileAccountServices
 import com.example.mobile_services.services.MobileLocationServices
 import com.example.mobile_services.services.MobileMapServices
@@ -21,6 +19,7 @@ import dagger.Provides
 
 @Module(
     includes = [
+        MobileSafeCheckModule::class,
         MobileAccountServicesModule::class,
         MobileLocationServicesModule::class,
         MobileMapServicesModule::class
@@ -29,11 +28,6 @@ import dagger.Provides
 abstract class MobileServicesModule {
     @Module
     companion object {
-        @Provides
-        @JvmStatic
-        fun provideSafeCheck(context: Context): SafeCheckImpl =
-            SafeCheckImpl(context)
-
         @Provides
         @JvmStatic
         fun provideMobileAccountService(
@@ -70,9 +64,6 @@ abstract class MobileServicesModule {
             safeCheck
         )
     }
-
-    @Binds
-    abstract fun bindSafeCheck(safeCheck: SafeCheckImpl): SafeCheck
 
     @Binds
     abstract fun bindAccountService(accountServices: MobileAccountServices): AccountServices
