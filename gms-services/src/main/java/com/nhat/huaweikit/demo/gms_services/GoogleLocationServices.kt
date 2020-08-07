@@ -12,10 +12,11 @@ import com.google.android.gms.location.LocationServices.getFusedLocationProvider
 import com.google.android.gms.location.LocationServices.getSettingsClient
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
-import com.nhat.huaweikit.demo.nd_services.LocationData
-import com.nhat.huaweikit.demo.nd_services.LocationServices
+import com.nhat.icore_services.common.LocationData
+import com.nhat.icore_services.services.LocationServices
+import javax.inject.Inject
 
-class GoogleLocationServices :
+class GoogleLocationServices @Inject constructor() :
     LocationServices {
     companion object {
         const val TAG = "GoogleLocationServices"
@@ -52,7 +53,12 @@ class GoogleLocationServices :
                                 TAG,
                                 "onLocationResult location[Longitude,Latitude,Accuracy]:" + location.longitude.toString() + "," + location.latitude.toString() + "," + location.accuracy
                             )
-                            callback.invoke(LocationData(location.latitude, location.longitude))
+                            callback.invoke(
+                                LocationData(
+                                    location.latitude,
+                                    location.longitude
+                                )
+                            )
                         }
                     }
                 }
@@ -78,7 +84,7 @@ class GoogleLocationServices :
             settingsClient.checkLocationSettings(locationSettingsRequest)
                 .addOnSuccessListener {
                     Log.i(TAG, "check location settings success")
-                    // request location updates
+                    //FIXME request location updates
                     fusedLocationProviderClient
                         .requestLocationUpdates(
                             mLocationRequest,
@@ -119,5 +125,13 @@ class GoogleLocationServices :
         } catch (e: Exception) {
             Log.e(TAG, "removeLocationUpdatesWithCallback exception:" + e.message)
         }
+    }
+
+    override fun requestGeoFenceCallback() {
+        //DO NOTHING
+    }
+
+    override fun removeWithID() {
+        //DO NOTHING
     }
 }

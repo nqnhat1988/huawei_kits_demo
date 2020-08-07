@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nhat.huaweikit.demo.huawei">
 
-    <!--HMS-SDK need network permission while check if upgrade is neccessary-->
+    <!--HMS-SDK need network permission while check if upgrade is necessary-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!--HMS-SDK need network permission while hms is upgrading-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -45,6 +45,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDUlxYikbdTNS7hFnBfgnHjHpFempxNGJQ" />
     </application>
 
 </manifest>

@@ -7,14 +7,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.nhat.huaweikit.demo.huawei.BuildConfig
 import com.nhat.huaweikit.demo.huawei.R
 import com.nhat.huaweikit.demo.huawei.common.BaseFragment
 import com.nhat.huaweikit.demo.huawei.common.finishWithResult
 import com.nhat.huaweikit.demo.huawei.common.visible
-import com.nhat.huaweikit.demo.nd_services.AccountServices
-import com.nhat.huaweikit.demo.nd_services.Constant
 import com.nhat.huaweikit.demo.presentation.user.UserViewModel
+import com.nhat.icore_services.common.Constant
+import com.nhat.icore_services.common.MobileServicesEnum
+import com.nhat.icore_services.common.SafeCheck
+import com.nhat.icore_services.services.AccountServices
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
@@ -31,6 +32,10 @@ class LoginFragment : BaseFragment<UserViewModel>() {
     @Inject
     lateinit var accountServices: AccountServices
 
+    @Inject
+    lateinit var safeCheck: SafeCheck
+
+    private val isHMS by lazy { safeCheck.mobileServicesEnum == MobileServicesEnum.HMS }
 
     private fun signIn() {
         accountServices.signIn(this)
@@ -56,11 +61,10 @@ class LoginFragment : BaseFragment<UserViewModel>() {
         userViewModel.userLiveData.observe(viewLifecycleOwner, Observer {
 
         })
-        val isGMS = BuildConfig.FLAVOR == "gms"
 
-        btn_google_sign_in.visibility = isGMS.visible()
-        btn_login_with_token.visibility = isGMS.not().visible()
-        btn_login_with_auth_code.visibility = isGMS.not().visible()
+        btn_google_sign_in.visibility = isHMS.not().visible()
+        btn_login_with_token.visibility = isHMS.visible()
+        btn_login_with_auth_code.visibility = isHMS.visible()
 
         btn_google_sign_in.setOnClickListener {
             signIn()

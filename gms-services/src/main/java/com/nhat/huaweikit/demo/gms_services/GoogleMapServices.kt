@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL
 import com.google.android.gms.maps.GoogleMapOptions
 import com.google.android.gms.maps.MapView
-import com.nhat.huaweikit.demo.nd_services.MapServices
+import com.nhat.icore_services.services.MapServices
+import javax.inject.Inject
 
-class GoogleMapServices : MapServices {
+class GoogleMapServices @Inject constructor() :
+    MapServices {
     override val mapBundleId: String
         get() = "MapViewBundleKey"
     private lateinit var mapView: MapView

@@ -1,0 +1,38 @@
+image: circleci/android:api-29
+
+options:
+  size: 2x
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - gradle
+        script:
+          - ./gradlew assemble --stacktrace
+  tags:
+    gms-*:
+      - step:
+          caches:
+            - gradle
+          script:
+            - ./gradlew assembleGms --stacktrace
+    hms-*:
+      - step:
+          caches:
+            - gradle
+          script:
+            - ./gradlew assembleHms --stacktrace
+    branches:
+      production/gms:
+        - step:
+            caches:
+              - gradle
+            script:
+              - ./gradlew assembleGmsRelease --stacktrace
+      production/hms:
+        - step:
+            caches:
+              - gradle
+            script:
+              - ./gradlew assembleHmsRelease --stacktrace

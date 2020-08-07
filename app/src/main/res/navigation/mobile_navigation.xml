@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/nav_push"
-        android:name="com.nhat.huaweikit.demo.hwhelper.ui.push.PushFragment"
+        android:name="com.nhat.huaweikit.demo.huawei_services.ui.push.PushFragment"
         android:label="@string/menu_push"
         tools:layout="@layout/fragment_push" />
 
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/nav_health"
-        android:name="com.nhat.huaweikit.demo.hwhelper.ui.health.HealthFragment"
+        android:name="com.nhat.huaweikit.demo.huawei_services.ui.health.HealthFragment"
         android:label="@string/menu_health"
         tools:layout="@layout/fragment_health" />
 </navigation>
