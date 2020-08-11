@@ -1,0 +1,12 @@
+include ':app'
+include ':domain'
+include ':presentation'
+include ':huawei-services'
+include ':gms-services'
+include ':hcore-services'
+include ':mobile-services'
+rootProject.name = "HCore Example"
+project(':huawei-services').projectDir = new File(settingsDir, '../huawei-services')
+project(':gms-services').projectDir = new File(settingsDir, '../gms-services')
+project(':hcore-services').projectDir = new File(settingsDir, '../hcore-services')
+project(':mobile-services').projectDir = new File(settingsDir, '../mobile-services')

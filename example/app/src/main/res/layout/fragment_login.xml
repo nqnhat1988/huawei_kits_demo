@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!--TODO split 2 build variant-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_google_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_login_with_token"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@android:color/holo_red_light"
+                android:textColor="@android:color/white"
+                android:text="@string/login_with_token_id"
+                android:drawableStart="@drawable/hw_logo2" />
+
+            <Button
+                android:layout_marginTop="16dp"
+                android:id="@+id/btn_login_with_auth_code"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_blue_light"
+                android:drawableStart="@drawable/hw_logo2"
+                android:text="@string/login_with_authen_code" />
+
+            <Button
+                android:layout_marginTop="16dp"
+                android:id="@+id/btn_sign_out"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/signout" />
+
+            <Button
+                android:layout_marginTop="16dp"
+                android:id="@+id/btn_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/hms_cancel" />
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
