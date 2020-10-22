@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat
+import com.example.mobile_services.CSharpHelper
 import com.huawei.apac.dtse.hcoreexample.common.BaseFragment
 import com.nhat.huaweikit.demo.huawei.R
 import com.nhat.icore_services.common.Constant
@@ -27,6 +28,8 @@ class MapFragment : BaseFragment<Void>() {
 
     @Inject
     lateinit var mapServices: MapServices
+
+    lateinit var anotherMapServices: MapServices
 
     private lateinit var locationCallback: (location: LocationData) -> Unit
 
@@ -75,7 +78,11 @@ class MapFragment : BaseFragment<Void>() {
             locationServices.requestLocationUpdatesWithCallback(locationCallback)
         }
 
-        mapServices.init(map_container, savedInstanceState)
+//        mapServices.init(map_container, savedInstanceState)
+
+        val anotherSafeCheck = CSharpHelper.isSupportHMS(requireContext())
+        anotherMapServices = CSharpHelper.provideMapServices(anotherSafeCheck)
+        anotherMapServices.init(map_container, savedInstanceState)
 
         btn_start_geo_fence.setOnClickListener {
             locationServices.requestGeoFenceCallback()
@@ -118,28 +125,33 @@ class MapFragment : BaseFragment<Void>() {
 
     override fun onStart() {
         super.onStart()
-        mapServices.onStart()
+//        mapServices.onStart()
+        anotherMapServices.onStart()
     }
 
     override fun onStop() {
         super.onStop()
-        mapServices.onStop()
+//        mapServices.onStop()
+        anotherMapServices.onStop()
     }
 
     override fun onDestroy() {
         locationServices.removeLocationUpdatesWithCallback()
         locationServices.removeWithID()
-        mapServices.onDestroy()
+//        mapServices.onDestroy()
+        anotherMapServices.onDestroy()
         super.onDestroy()
     }
 
     override fun onPause() {
-        mapServices.onPause()
+//        mapServices.onPause()
+        anotherMapServices.onPause()
         super.onPause()
     }
 
     override fun onResume() {
         super.onResume()
-        mapServices.onResume()
+//        mapServices.onResume()
+        anotherMapServices.onResume()
     }
 }

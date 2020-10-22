@@ -105,8 +105,8 @@ dependencies {
     //local project dependencies
     hmsImplementation project(':huawei-services')
     gmsImplementation project(':gms-services')
-//    implementation project(':mobile-services')
-    implementation 'com.github.nqnhat1988.huawei_kits_demo:mobile-services:1.1.1'
+    implementation project(':mobile-services')
+//    implementation 'com.github.nqnhat1988.huawei_kits_demo:mobile-services:1.1.1'
     implementation project(':presentation')
     implementation project(':domain')
 
