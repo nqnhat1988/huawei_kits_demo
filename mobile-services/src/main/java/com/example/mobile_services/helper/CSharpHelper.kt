@@ -1,4 +1,4 @@
-package com.example.mobile_services
+package com.example.mobile_services.helper
 
 import android.content.Context
 import com.example.mobile_services.common.SafeCheckImpl
