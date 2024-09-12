@@ -37,6 +37,7 @@ class HuaweiMapServices @Inject constructor() :
             it.getMapAsync { huaweiMap ->
                 //FIXME enhance here
                 huaweiMap.isMyLocationEnabled = true
+                huaweiMap.setGeoPoliticalView("VN")
             }
         }
     }
